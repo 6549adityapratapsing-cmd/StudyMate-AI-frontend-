@@ -35,6 +35,15 @@ export function AuthProvider({ children }) {
     }
 
     restoreSession();
+
+    // Listen for unauthorized 401 events from any API call
+    const handleUnauthorized = (e) => {
+      logout();
+      setAuthError(e.detail?.message || 'Your session expired. Please log in or register again.');
+    };
+
+    window.addEventListener('studymate:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('studymate:unauthorized', handleUnauthorized);
   }, []);
 
   const login = async (email, password) => {

@@ -35,6 +35,26 @@ export async function apiRequest(endpoint, options = {}) {
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
+      if (
+        response.status === 401 &&
+        !endpoint.includes('/auth/login') &&
+        !endpoint.includes('/auth/register')
+      ) {
+        // Automatically clear stale or invalidated JWT token
+        localStorage.removeItem('studymate_token');
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(
+            new CustomEvent('studymate:unauthorized', {
+              detail: {
+                message:
+                  data?.message ||
+                  'Your session has expired or the server restarted. Please log in or register again.',
+              },
+            })
+          );
+        }
+      }
+
       const errorMessage = data?.message || `Request failed with status ${response.status}`;
       const error = new Error(errorMessage);
       error.status = response.status;

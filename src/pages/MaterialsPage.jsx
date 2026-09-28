@@ -282,7 +282,7 @@ export default function MaterialsPage() {
         {errorMsg && (
           <div
             style={{
-              padding: '12px 16px',
+              padding: '14px 18px',
               background: 'var(--danger-bg)',
               border: '1px solid rgba(239, 68, 68, 0.4)',
               borderRadius: 'var(--radius-md)',
@@ -290,12 +290,37 @@ export default function MaterialsPage() {
               fontSize: '0.88rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
+              justifyContent: 'space-between',
+              gap: '12px',
               marginBottom: '20px',
+              flexWrap: 'wrap',
             }}
           >
-            <AlertCircle size={18} />
-            <span>{errorMsg}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <AlertCircle size={18} />
+              <span>{errorMsg}</span>
+            </div>
+            {(errorMsg.toLowerCase().includes('token') ||
+              errorMsg.toLowerCase().includes('exist') ||
+              errorMsg.toLowerCase().includes('session') ||
+              errorMsg.toLowerCase().includes('sign in')) && (
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <Link
+                  to="/login"
+                  className="btn btn-secondary"
+                  style={{ padding: '6px 14px', fontSize: '0.8rem', borderColor: 'rgba(239, 68, 68, 0.5)' }}
+                >
+                  Log In
+                </Link>
+                <Link
+                  to="/register"
+                  className="btn btn-primary"
+                  style={{ padding: '6px 14px', fontSize: '0.8rem' }}
+                >
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
         )}
 
