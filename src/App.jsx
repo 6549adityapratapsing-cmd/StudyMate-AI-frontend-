@@ -21,6 +21,8 @@ import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import MaterialsPage from './pages/MaterialsPage.jsx';
+import SummaryPage from './pages/SummaryPage.jsx';
+import ImportantQuestionsPage from './pages/ImportantQuestionsPage.jsx';
 
 function AppLayout() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -232,6 +234,8 @@ function AppLayout() {
           <Routes>
             <Route path="/" element={<DashboardHome />} />
             <Route path="/materials" element={<MaterialsPage />} />
+            <Route path="/summary" element={<SummaryPage />} />
+            <Route path="/important-questions" element={<ImportantQuestionsPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<DashboardHome />} />

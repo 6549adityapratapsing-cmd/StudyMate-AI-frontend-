@@ -64,4 +64,12 @@ export const materialsAPI = {
   delete: (id) => apiRequest(`/materials/${id}`, { method: 'DELETE' }),
 };
 
+export const aiAPI = {
+  getQuickSummary: (payload) => apiRequest('/ai/quick-summary', { method: 'POST', body: JSON.stringify(payload) }),
+  getDetailedSummary: (payload) => apiRequest('/ai/detailed-summary', { method: 'POST', body: JSON.stringify(payload) }),
+  getKeyPoints: (payload) => apiRequest('/ai/key-points', { method: 'POST', body: JSON.stringify(payload) }),
+  explainConcept: (payload) => apiRequest('/ai/explain', { method: 'POST', body: JSON.stringify(payload) }),
+  getImportantQuestions: (payload) => apiRequest('/ai/important-questions', { method: 'POST', body: JSON.stringify(payload) }),
+};
+
 export default apiRequest;
