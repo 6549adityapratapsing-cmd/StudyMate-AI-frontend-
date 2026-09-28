@@ -4,6 +4,12 @@ The official Single Page Application (SPA) frontend for **StudyMate AI** — an 
 
 ---
 
+## 🌐 Live Production Application
+- **Live Web App**: [https://study-mate-ai-frontend-6hw8jirij-studymeta-ai.vercel.app/](https://study-mate-ai-frontend-6hw8jirij-studymeta-ai.vercel.app/)
+- **Live Backend API**: [https://studymate-ai-backend-kmhk.onrender.com/api](https://studymate-ai-backend-kmhk.onrender.com/api)
+
+---
+
 ## 🛠️ Tech Stack
 - **Framework**: React 18
 - **Bundler**: Vite
