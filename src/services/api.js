@@ -56,4 +56,12 @@ export const authAPI = {
   logout: () => apiRequest('/auth/logout', { method: 'POST' }),
 };
 
+export const materialsAPI = {
+  uploadFile: (formData) => apiRequest('/materials/upload', { method: 'POST', body: formData }),
+  uploadText: (payload) => apiRequest('/materials/upload', { method: 'POST', body: JSON.stringify(payload) }),
+  list: () => apiRequest('/materials', { method: 'GET' }),
+  getById: (id) => apiRequest(`/materials/${id}`, { method: 'GET' }),
+  delete: (id) => apiRequest(`/materials/${id}`, { method: 'DELETE' }),
+};
+
 export default apiRequest;
